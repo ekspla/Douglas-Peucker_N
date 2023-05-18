@@ -6,4 +6,4 @@ Reduce gpx track points by using Douglas-Peucker N algorithm.  https://psimpl.so
 
 Requires gpxpy.  https://github.com/tkrajina/gpxpy
 
-Originally written in javascript by 330k.  https://github.com/330k/gpx_tools
+Original version written in JavaScript by 330k.  https://github.com/330k/gpx_tools

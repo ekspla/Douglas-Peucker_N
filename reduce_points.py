@@ -1,11 +1,11 @@
 ﻿# -*- coding: utf-8 -*-
 #
-# 2023, a quick python port by ekspla.  https://github.com/ekspla
+# May 2023, a quick python port by ekspla.  https://github.com/ekspla/Douglas-Peucker_N
 #
 # Reduce gpx track points by using Douglas-Peucker N algorithm.
 # (https://psimpl.sourceforge.net/douglas-peucker.html)
 #
-# Originally written in javascript by 330k.  https://github.com/330k
+# Original version written in JavaScript by 330k.  https://github.com/330k/gpx_tools
 # (c) 2014-2023 Kei Misawa, MIT License.
 
 import math
@@ -54,9 +54,9 @@ def reduce_points2(trkpts, target_points):
     """Reduce gpx track points using Douglas-Peucker N
     
     Args:
-        trkpts; should be an iterable containing track points.
+        trkpts; an iterable containing track points.
             Each track point should have attributes of longitude
-            and latitude in decimal degree format.
+            and latitude in decimal degree format (float).
         target_points; number of points in integer
 
     Returns:
@@ -138,13 +138,11 @@ class PriorityQueue():
     _root = None
 
     def _merge(self, i, j):
-        if i == None: return j
-        if j == None: return i
+        if i is None: return j
+        if j is None: return i
 
         if i['p'] < j['p']:
-            ret = i
-            i = j
-            j = ret
+            i, j = j, i
 
         j['next'] = i['head']
         i['head'] = j
