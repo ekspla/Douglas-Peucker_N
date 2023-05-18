@@ -1,6 +1,6 @@
 # Douglas-Peucker_N
 
-Reduce gpx track points by using Douglas-Peucker N algorithm.
+Reduce gpx track points by using Douglas-Peucker N algorithm.  https://psimpl.sourceforge.net/douglas-peucker.html
 
 2023, a quick python port by ekspla.  https://github.com/ekspla
 
