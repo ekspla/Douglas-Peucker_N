@@ -1,5 +1,4 @@
 # Douglas-Peucker_N
-Reduce gpx track points using Douglas-Peucker N
 
 Reduce gpx track points by using Douglas-Peucker N algorithm.
 
