@@ -108,17 +108,21 @@ def find_farthest(pts, start, end):
 
 
 def segment_point_distance(ax, ay, bx, by, px, py):
-    t = (ax ** 2 + ay ** 2 + bx * px - ax * (bx + px) + by * py - ay * (by + py))/(ax ** 2 + ay ** 2 - 2 * ax * bx + bx ** 2 - 2 * ay * by + by ** 2)
-    x = ax - (ax - bx) * t
-    y = ay - (ay - by) * t
+    """Squared distance, actually"""
+    t = ((ax - bx) * (ax - px) + (ay - by) * (ay - py)) / ((ax - bx) * (ax - bx) + (ay - by) * (ay - by))
 
-    if 0 <= t <= 1:
-        return (x - px) ** 2 + (y - py) ** 2
-    elif t > 1:
-        return (bx - px) ** 2 + (by - py) ** 2
+    if t > 1:
+        t = 1
+    elif t > 0:
+        pass
     else:
         # // includes A == B
-        return (ax - px) ** 2 + (ay - py) ** 2
+        t = 0
+
+    x = ax - t * (ax - bx)
+    y = ay - t * (ay - by)
+
+    return (x - px) * (x - px) + (y - py) * (y - py)
 
 
 class PriorityQueue():
