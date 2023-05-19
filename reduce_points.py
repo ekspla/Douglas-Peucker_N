@@ -52,7 +52,7 @@ def finalize_gpx(gpx, outfile_path=None):
 
 def reduce_points2(trkpts, target_points):
     """Reduce gpx track points using Douglas-Peucker N
-    
+
     Args:
         trkpts; an iterable object containing track points.
             Each track point should have attributes of longitude
@@ -108,7 +108,6 @@ def find_farthest(pts, start, end):
 
 
 def segment_point_distance(ax, ay, bx, by, px, py):
-    """Squared distance, actually"""
     t = ((ax - bx) * (ax - px) + (ay - by) * (ay - py)) / ((ax - bx) * (ax - bx) + (ay - by) * (ay - by))
 
     if t > 1:
@@ -122,7 +121,7 @@ def segment_point_distance(ax, ay, bx, by, px, py):
     x = ax - t * (ax - bx)
     y = ay - t * (ay - by)
 
-    return (x - px) * (x - px) + (y - py) * (y - py)
+    return math.hypot(x - px, y - py)
 
 
 class PriorityQueue():
