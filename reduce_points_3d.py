@@ -55,8 +55,8 @@ def reduce_points3d(trkpts, target_points):
     
     Args:
         trkpts; an iterable object containing track points.
-            Each track point should have attributes of longitude
-            and latitude in decimal degree format (float).
+            Each track point should have attributes of longitude, 
+            latitude and elevation in decimal degree format (float).
         target_points; number of points in integer
 
     Returns:
