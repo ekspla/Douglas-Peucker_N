@@ -52,11 +52,11 @@ def finalize_gpx(gpx, outfile_path=None):
 
 def reduce_points3d(trkpts, target_points):
     """Reduce gpx track points using Douglas-Peucker N
-    
+
     Args:
         trkpts; an iterable object containing track points.
-            Each track point should have attributes of longitude, 
-            latitude and elevation in decimal degree format (float).
+            Each track point should have attributes of longitude/
+            latitude (in decimal degrees) and elevation (float).
         target_points; number of points in integer
 
     Returns:
@@ -146,6 +146,7 @@ def segment_point_distance3d(ax, ay, az, bx, by, bz, px, py, pz):
     y = ay - t * (ay - by)
     z = az - t * (az - bz)
 
+    #return math.hypot(x - px, y - py, z - pz) # for Python version => 3.8
     return (x - px) * (x - px) + (y - py) * (y - py) + (z - pz) * (z - pz)
 
 
