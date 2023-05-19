@@ -54,7 +54,7 @@ def reduce_points2(trkpts, target_points):
     """Reduce gpx track points using Douglas-Peucker N
     
     Args:
-        trkpts; an iterable containing track points.
+        trkpts; an iterable object containing track points.
             Each track point should have attributes of longitude
             and latitude in decimal degree format (float).
         target_points; number of points in integer
@@ -63,10 +63,7 @@ def reduce_points2(trkpts, target_points):
         a list of track points; reduced_points
     """
     queue = PriorityQueue()
-    #removed_points = []
-    #reduced_points = []
     count = 2
-    v = {}
 
     pts = [(
             math.radians(trkpt.longitude), 
@@ -91,14 +88,7 @@ def reduce_points2(trkpts, target_points):
             farthest = find_farthest(pts, v['pos'], v['end'])
             queue.enqueue(farthest['dist'], farthest)
 
-    #for i in range(len(pts)):
-    #    if flags[i]:
-    #        removed_points.append(trkpts[i])
-    #    else:
-    #        reduced_points.append(trkpts[i])
-    #print(len(removed_points), len(reduced_points))
-
-    reduced_points = [trkpts[i] for i in range(len(pts)) if not flags[i]]
+    reduced_points = [trkpt for trkpt, flag in zip(trkpts, flags) if not flag]
     return reduced_points
 
 
@@ -110,7 +100,6 @@ def find_farthest(pts, start, end):
     c = -1
 
     for i in range(start + 1, end):
-        #d = segment_point_distance(a[0], a[1], b[0], b[1], pts[i][0], pts[i][1])
         d = segment_point_distance(*a, *b, *pts[i])
         if m < d:
             m = d
