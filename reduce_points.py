@@ -67,7 +67,7 @@ def reduce_points2(trkpts, target_points):
 
     pts = [(
             math.radians(trkpt.longitude), 
-            math.asinh(math.tanh(math.radians(trkpt.latitude))), 
+            math.asinh(math.tan(math.radians(trkpt.latitude))), 
             ) for trkpt in trkpts]
     flags = [True, ] * len(trkpts)
 
