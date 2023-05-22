@@ -17,8 +17,9 @@ It took less than 1 sec to reduce 78252 of trackpoints (a sample file in 330k's 
 surprisingly faster than 23 sec with gpsbabel.
 
 ## How to use
-An example to process tracks is shown in **reduce_points()**.  For routes/waypoints, modify the codes in the function.
+**An example to process tracks** is shown in **reduce_points()**.  For routes/waypoints, modify the codes in the function.
 
 ## Reference
 [1] https://www.gpsbabel.org/htmldoc-1.8.0/filter_simplify.html
+
 [2] https://330k.github.io/line_simplify_demo/gpx_visual_simplify.html
