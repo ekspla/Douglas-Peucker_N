@@ -13,7 +13,7 @@ This is a faster algorithm to reduce size of a track as compared to simplify/cro
 I found it useful for processing tracks/routes before installing them into a small navigation devices.
 
 Processing time was measured using my core i5 (gen4) PC with CPython 3.9 and compared with those of gpsbabel.
-It took less than 1 sec to reduce 78252 of trackpoints (a sample file in 330k's web site) to 2000 points, 
+It took less than 1 sec to reduce 78252 of trackpoints (a sample file in 330k's web site  [2]) to 2000 points, 
 surprisingly faster than 23 sec with gpsbabel.
 
 ## How to use
@@ -22,4 +22,6 @@ surprisingly faster than 23 sec with gpsbabel.
 ## Reference
 [1] https://www.gpsbabel.org/htmldoc-1.8.0/filter_simplify.html
 
-[2] https://330k.github.io/line_simplify_demo/gpx_visual_simplify.html
+[2] https://github.com/330k/gpx_tools
+
+[3] https://330k.github.io/line_simplify_demo/gpx_visual_simplify.html
