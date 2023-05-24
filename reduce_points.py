@@ -50,7 +50,7 @@ def finalize_gpx(gpx, outfile_path=None):
         print(gpx.to_xml('1.1'))
 
 
-def reduce_points2(trkpts, target_points):
+def reduce_points2(trkpts, target_points, flags_out=False):
     """Reduce gpx track points using Douglas-Peucker N
 
     Args:
@@ -58,6 +58,7 @@ def reduce_points2(trkpts, target_points):
             Each track point should have attributes of longitude
             and latitude in decimal degree format (float).
         target_points; number of points in integer
+        flags_out; True/False output flags if True.
 
     Returns:
         a list of track points; reduced_points
@@ -88,8 +89,11 @@ def reduce_points2(trkpts, target_points):
             farthest = find_farthest(pts, v['pos'], v['end'])
             queue.enqueue(farthest['dist'], farthest)
 
-    reduced_points = [trkpt for trkpt, flag in zip(trkpts, flags) if not flag]
-    return reduced_points
+    if flags_out:
+        return flags
+    else:
+        reduced_points = [trkpt for trkpt, flag in zip(trkpts, flags) if not flag]
+        return reduced_points
 
 
 def find_farthest(pts, start, end):
