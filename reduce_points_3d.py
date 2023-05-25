@@ -94,7 +94,7 @@ def reduce_points3d(trkpts, target_points, flags_out=False):
         return reduced_points
 
 
-def latlng2xyz(lat, lng, h = 0.0):
+def latlng2xyz(lat, lng, h=0.0):
     a = 6378137.0
     f = 1 / 298.257223563
     e2 = f * (2 - f)
@@ -216,4 +216,11 @@ class PriorityQueue():
 
 
 if __name__ == '__main__':
-    reduce_points(Path(sys.argv[1]), 2000)
+    argvs = sys.argv
+    argc = len(argvs)
+    if argc < 2:
+        print(f'Usage: # python {argvs[0]} input_filename number_of_points\n')
+        sys.exit(0)
+    in_file = argvs[1]
+    points = 2000 if argc < 3 else int(argvs[2])
+    reduce_points(Path(in_file), points)

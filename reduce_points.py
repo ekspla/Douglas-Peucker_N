@@ -190,4 +190,11 @@ class PriorityQueue():
 
 
 if __name__ == '__main__':
-    reduce_points(Path(sys.argv[1]), 2000)
+    argvs = sys.argv
+    argc = len(argvs)
+    if argc < 2:
+        print(f'Usage: # python {argvs[0]} input_filename number_of_points\n')
+        sys.exit(0)
+    in_file = argvs[1]
+    points = 2000 if argc < 3 else int(argvs[2])
+    reduce_points(Path(in_file), points)
