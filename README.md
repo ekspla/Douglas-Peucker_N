@@ -1,19 +1,18 @@
 # Douglas-Peucker_N
 
-**Reduce gpx track points to a target number of points** by using Douglas-Peucker N algorithm.  https://psimpl.sourceforge.net/douglas-peucker.html
+**Reduce gpx track points to a target number of points** by using [Douglas-Peucker N algorithm](https://psimpl.sourceforge.net/douglas-peucker.html).  
 
-May 2023, a quick python port by ekspla.  https://github.com/ekspla/Douglas-Peucker_N  
-Requires gpxpy.  https://github.com/tkrajina/gpxpy
+May 2023, a quick [python port](https://github.com/ekspla/Douglas-Peucker_N) by ekspla.    
+Requires [gpxpy](https://github.com/tkrajina/gpxpy).  
 
-Original version written in JavaScript by 330k.  https://github.com/330k/gpx_tools
+[Original version written in JavaScript](https://github.com/330k/gpx_tools) by 330k.  
 
 ## Introduction
-This is a faster algorithm to reduce size of a track as compared to simplify--crosstrack in gpsbabel [1](https://www.gpsbabel.org/htmldoc-1.8.0/filter_simplify.html).
+This is a faster algorithm to reduce size of a track as compared to [simplify--crosstrack in gpsbabel](https://www.gpsbabel.org/htmldoc-1.8.0/filter_simplify.html). 
 I found it useful for processing tracks/routes before installing them into a small navigation devices.
 
 Processing time was measured using my core i5 (gen4) PC with CPython 3.9 and compared with those of gpsbabel.
-It took less than 1 sec to reduce 78252 of trackpoints (a sample file in 330k's web site  [2](https://github.com/330k/gpx_tools)) to 2000 points, 
-surprisingly faster than 23 sec with gpsbabel.
+It took less than 1 sec to reduce 78252 of trackpoints ([a sample file in 330k's web site](https://github.com/330k/gpx_tools)) to 2000 points, surprisingly faster than 23 sec with gpsbabel.
 
 ## Coordinate transformations used in the scripts
 - `reduce_points.py`  
