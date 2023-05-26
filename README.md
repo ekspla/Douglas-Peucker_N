@@ -24,7 +24,7 @@ surprisingly faster than 23 sec with gpsbabel.
 - `reduce_points_2dt.py`  
   (x, y) = Mercator_projection(latitude, longitude); assuming sphere.  
   z = time * Average_speed  
-  This script may be useful in processing real gps tracks with timestamps.
+  This script may be useful in processing real gps tracks **with timestamps**.
 
 ## How to use
 **An example to process tracks** is shown in **reduce_points()**.  For routes/waypoints, modify the codes in that function.
