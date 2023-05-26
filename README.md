@@ -2,8 +2,8 @@
 
 **Reduce gpx track points to a target number of points** by using [Douglas-Peucker N algorithm](https://psimpl.sourceforge.net/douglas-peucker.html).  
 
-May 2023, a quick [python port](https://github.com/ekspla/Douglas-Peucker_N) by ekspla.    
-Requires [gpxpy](https://github.com/tkrajina/gpxpy).  
+May 2023, a quick [python port](https://github.com/ekspla/Douglas-Peucker_N) by ekspla.  
+Requires [gpxpy](https://github.com/tkrajina/gpxpy) or [lxml](https://pypi.org/project/lxml/).  
 
 [Original version written in JavaScript](https://github.com/330k/gpx_tools) by 330k.  
 
