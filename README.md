@@ -23,6 +23,7 @@ surprisingly faster than 23 sec with gpsbabel.
     (x, y, z) = Cartesian(latitude, longitude, altitude); assuming ellipsoid.
 - `reduce_points_2dt.py`
     (x, y) = Mercator_projection(latitude, longitude); assuming sphere.
+
     z = time * Average_speed
     This script may be useful in processing real gps tracks with timestamps.
 
