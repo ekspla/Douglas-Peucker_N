@@ -25,9 +25,8 @@ def reduce_points(gpxdocs, num_points=65535, write_file=True):
                 trkpts = segment.points
                 trkpts_length = len(trkpts)
                 if num_points < trkpts_length:
-                    ave_speed = segment.length_2d() / segment.get_duration()
-                    #print(ave_speed)
                     start_time = time.time()
+                    ave_speed = segment.length_2d() / segment.get_duration()
                     segment.points = reduce_points2dt(trkpts, num_points, ave_speed=ave_speed)
                     print(f'Time: {time.time() - start_time} s')
                 print(f'Reduce trkpt: from {trkpts_length} to {len(segment.points)}')
@@ -58,13 +57,14 @@ def reduce_points2dt(trkpts, target_points, flags_out=False, ave_speed=5.556):
     Args:
         trkpts; an iterable object containing track points.
             Each track point should have attributes of longitude/
-            latitude (in decimal degrees) and elevation (float).
+            latitude (decimal degrees in float) and time (in datetime).
         target_points; number of points in integer
         flags_out; True/False output flags if True.
         ave_speed; averaged speed in m/s used for scaling times.
 
     Returns:
-        a list of track points; reduced_points
+        a list of track points if flags_out is False; reduced_points
+        else flags; a list of True/False flags
     """
     queue = PriorityQueue()
     count = 2
@@ -74,7 +74,7 @@ def reduce_points2dt(trkpts, target_points, flags_out=False, ave_speed=5.556):
         trkpt.latitude, 
         trkpt.longitude, 
         (trkpt.time - start_time).total_seconds(), 
-        ave_speed
+        ave_speed, 
         ) for trkpt in trkpts]
     flags = [True, ] * len(trkpts)
 
@@ -102,7 +102,7 @@ def reduce_points2dt(trkpts, target_points, flags_out=False, ave_speed=5.556):
         return reduced_points
 
 
-def latlngt2xyz(lat, lng, t, ave_speed=5.556):
+def latlngt2xyz(lat, lng, t, ave_speed):
 
     # Mercator coordinates in radians
     x = math.asinh(math.tan(math.radians(lat)))

@@ -61,7 +61,8 @@ def reduce_points3d(trkpts, target_points, flags_out=False):
         flags_out; True/False output flags if True.
 
     Returns:
-        a list of track points; reduced_points
+        a list of track points if flags_out is False; reduced_points
+        else flags; a list of True/False flags
     """
     queue = PriorityQueue()
     count = 2
