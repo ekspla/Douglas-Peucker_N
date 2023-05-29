@@ -5,7 +5,7 @@ import time
 from pathlib import Path
 import sys
 from datetime import datetime
-import math
+from math import radians, cos, hypot
 from lxml import etree
 import reduce_points_2dt
 
@@ -36,12 +36,11 @@ gpx_segment = [Trackpt(
     ) 
     for x in trkpts]
 
-length_2d = 111319 * sum([math.hypot( # 111319 m / deg., approximately.
-    gpx_segment[i-1].latitude - x.latitude, 
-    (gpx_segment[i-1].longitude - x.longitude) * math.cos(math.radians(gpx_segment[i-1].latitude)),
-    ) if i else 0.0 for (i, x) in enumerate(gpx_segment)])
+length_2d = 111319 * sum([hypot( # 111319 m / deg., approximately.
+    x_1.latitude - x.latitude, 
+    (x_1.longitude - x.longitude) * cos(radians(x_1.latitude)),
+    ) for x_1, x in zip(gpx_segment, gpx_segment[1:])])
 ave_speed = length_2d / (gpx_segment[-1].time - gpx_segment[0].time).total_seconds() # m/s
-#print(length_2d, ave_speed)
 
 rm_trkpts = reduce_points_2dt.reduce_points2dt(gpx_segment, target_points=points, flags_out=True, ave_speed=ave_speed)
 
