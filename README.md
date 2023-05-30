@@ -19,7 +19,7 @@ It took less than 1 sec to reduce 78252 of trackpoints ([a sample file in 330k's
   (x, y) = Mercator_projection **(latitude, longitude)**; assuming sphere.
 - `reduce_points_3d.py`  
   (x, y, z) = Cartesian **(latitude, longitude, altitude)**; assuming ellipsoid.  
-  This script may be useful if the track/route pass a hill top.
+  This script may be useful if the track/route passes a hill top.
 - `reduce_points_2dt.py`  
   (x, y) = Mercator_projection **(latitude, longitude)**; assuming sphere.  
   z = **time** * Average_speed  
