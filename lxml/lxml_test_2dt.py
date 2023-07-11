@@ -29,6 +29,10 @@ trk = tree.findall('trk', namespaces=NSMAP)
 trkseg = [x.findall('trkseg', namespaces=NSMAP) for x in trk][0]
 trkpts = [x.findall('trkpt', namespaces=NSMAP) for x in trkseg][0]
 
+if len(trkpts) < points:
+    print(f'Error: cannot reduce from {len(trkpts)} to {points}.')
+    sys.exit(1)
+
 gpx_segment = [Trackpt(
     longitude=float(x.attrib['lon']), 
     latitude=float(x.attrib['lat']), 
